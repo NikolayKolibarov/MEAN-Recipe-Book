@@ -1,0 +1,16 @@
+<h1>Create Recipe</h1>
+<div>
+    <md-card>
+        <form>
+            <md-input-container>
+                <input type="text" [(ngModel)]="name" mdInput name="name" placeholder="Name" />
+            </md-input-container>
+            <md-input-container>
+                <textarea [(ngModel)]="description" mdInput name="description" placeholder="Description" mdInput></textarea>
+            </md-input-container>
+            <label for="image">Image:</label>
+            <input type="file" [(ngModel)]="image" id="image" name="image" placeholder="Image" />
+        </form>
+    </md-card>
+    <button md-raised-button (click)="create(name, description)">Create Recipe</button>
+</div>

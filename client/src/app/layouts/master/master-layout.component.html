@@ -1,0 +1,60 @@
+<md-sidenav-container>
+  <md-sidenav mode="push" #sidenav>
+    <md-toolbar (click)="sidenav.close()">
+      <span>Recipe Book</span>
+
+      <md-toolbar-row *ngIf="!isAuthenticated">
+        <span>
+          <a routerLink="/login">Login</a>
+        </span>
+        <span class="spacer"></span>
+        <md-icon class="icon">perm_identity</md-icon>
+      </md-toolbar-row>
+
+      <md-toolbar-row *ngIf="isAuthenticated">
+        <span>
+          <a routerLink="/user/profile">{{user.username}}</a>
+        </span>
+        <span class="spacer"></span>
+        <md-icon class="icon">perm_identity</md-icon>
+      </md-toolbar-row>
+
+      <md-toolbar-row *ngIf="isAuthenticated">
+        <span>
+          <a href="javascript:;" (click)="logout()">Logout</a>
+        </span>
+        <span class="spacer"></span>
+        <md-icon class="icon">keyboard_return</md-icon>
+      </md-toolbar-row>
+
+      <md-toolbar-row *ngIf="isAuthenticated">
+        <span>
+          <a routerLink="/user/recipes">My Recipes</a>
+        </span>
+        <span class="spacer"></span>
+        <md-icon class="icon">local_library</md-icon>
+      </md-toolbar-row>
+
+      <md-toolbar-row>
+        <span>
+        <a routerLink="/recipes">Recipes</a>
+        </span>
+        <span class="spacer"></span>
+        <md-icon class="icon">content_paste</md-icon>
+      </md-toolbar-row>
+
+      <md-toolbar-row *ngIf="isAuthenticated">
+        <span>
+          <a routerLink="/recipes/create">Add Recipe</a>
+        </span>
+        <span class="spacer"></span>
+        <md-icon class="icon">create</md-icon>
+      </md-toolbar-row>
+    </md-toolbar>
+
+  </md-sidenav>
+  <header [sidenav]="sidenav"></header>
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</md-sidenav-container>
